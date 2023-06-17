@@ -1,0 +1,10 @@
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        diffList = [0,0]
+        for i in range(1,len(prices)):
+            if prices[i]-prices[i-1]+diffList[1] >=0:
+                diffList[1] = prices[i]-prices[i-1] + diffList[1]
+                diffList[0] = max(diffList[0],diffList[1])
+            else:
+                diffList[1] = 0
+        return diffList[0]    
